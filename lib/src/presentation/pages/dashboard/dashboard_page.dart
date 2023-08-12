@@ -1,5 +1,7 @@
 import 'package:droidcon_flutter/src/application/utils/spacers.dart';
 import 'package:droidcon_flutter/src/domain/constants/strings.dart';
+import 'package:droidcon_flutter/src/domain/constants/keys.dart';
+import 'package:droidcon_flutter/src/presentation/router/routes.dart';
 import 'package:flutter/material.dart';
 
 class DashboardPage extends StatelessWidget {
@@ -23,6 +25,13 @@ class DashboardPage extends StatelessWidget {
             textAlign: TextAlign.left,
             style: Theme.of(context).textTheme.bodyMedium,
           ),
+          ElevatedButton(
+            key: AppKeys.proceedBtnKey,
+            onPressed: () {
+              Navigator.of(context).pushNamed(AppRoutes.kanbanBoardRoute);
+            },
+            child: Text(AppStrings.proceedText),
+          )
         ],
       ),
     );
