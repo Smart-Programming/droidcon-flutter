@@ -25,7 +25,7 @@ run-dev:
 # Generates Freezed classes
 .PHONY: generate
 generate:
-	flutter pub run build_runner build --delete-conflicting-outputs
+	fvm flutter pub run build_runner build --delete-conflicting-outputs
 
 # Runs tests and their coverage
 # This will open google chrome with a coverage report that shows 
