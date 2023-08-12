@@ -1,29 +1,61 @@
-# This file configures the analyzer, which statically analyzes Dart code to
-# check for errors, warnings, and lints.
-#
-# The issues identified by the analyzer are surfaced in the UI of Dart-enabled
-# IDEs (https://dart.dev/tools#ides-and-editors). The analyzer can also be
-# invoked from the command line by running `flutter analyze`.
+include: package:lint/analysis_options.yaml
 
-# The following line activates a set of recommended lints for Flutter apps,
-# packages, and plugins designed to encourage good coding practices.
-include: package:flutter_lints/flutter.yaml
+analyzer:
+  strong-mode:
+    implicit-dynamic: true
+  errors:
+    todo: ignore
+    sdk_version_async_exported_from_core: ignore
+    missing_required_param: error
+    missing_return: error
+    invalid_annotation_target: ignore
+  exclude:
+    - "lib/generated_plugin_*.dart"
+    - "bin/cache/**"
+    - "lib/generated_plugin_*.dart"
+    - "bin/cache/**"
+    - "lib/**/*.g.dart"
+    - "lib/**/*.freezed.dart"
+    - "test/**/*.mocks.dart"
 
 linter:
-  # The lint rules applied to this project can be customized in the
-  # section below to disable rules from the `package:flutter_lints/flutter.yaml`
-  # included above or to enable additional rules. A list of all available lints
-  # and their documentation is published at
-  # https://dart-lang.github.io/linter/lints/index.html.
-  #
-  # Instead of disabling a lint rule for the entire project in the
-  # section below, it can also be suppressed for a single line of code
-  # or a specific dart file by using the `// ignore: name_of_lint` and
-  # `// ignore_for_file: name_of_lint` syntax on the line or in the file
-  # producing the lint.
   rules:
-    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
-    # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+    prefer_single_quotes: true
+    always_declare_return_types: true
+    omit_local_variable_types: false
+    unnecessary_this: false
+    prefer_collection_literals: false
+    always_specify_types: true
+    valid_regexps: true
+    unnecessary_statements: true
+    unrelated_type_equality_checks: true
+    unnecessary_string_interpolations: true
+    unnecessary_string_escapes: true
+    unnecessary_parenthesis: true
+    unnecessary_null_in_if_null_operators: true
+    unnecessary_null_aware_assignments: true
+    unnecessary_new: true
+    unnecessary_const: true
+    unnecessary_brace_in_string_interps: true
+    tighten_type_of_initializing_formals: true
+    test_types_in_equals: true
+    slash_for_doc_comments: true
+    prefer_void_to_null: true
+    prefer_typing_uninitialized_variables: true
+    prefer_spread_collections: true
+    prefer_contains: true
+    prefer_adjacent_string_concatenation: true
+    package_api_docs: true
+    no_duplicate_case_values: true
+    avoid_escaping_inner_quotes: false
+    avoid_classes_with_only_static_members: true
+    prefer_constructors_over_static_methods: false
+    file_names: false
+    constant_identifier_names: false
+    avoid_bool_literals_in_conditional_expressions: false
+    sort_pub_dependencies: false
 
-# Additional information about this file can be found at
-# https://dart.dev/guides/language/analysis-options
+    exclude:
+      - "lib/**/*.g.dart"
+      - "lib/**/*.freezed.dart"
+      - "test/**/*.mocks.dart"
