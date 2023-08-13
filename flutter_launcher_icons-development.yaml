@@ -1,0 +1,6 @@
+flutter_icons:
+  image_path: "assets/icons/png/rubis_logo.png"
+  android: true
+  ios: true
+  image_path_ios: "assets/icons/png/rubis_logo.png"
+  remove_alpha_ios: true
