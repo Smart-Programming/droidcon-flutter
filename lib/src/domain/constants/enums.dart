@@ -3,3 +3,9 @@ enum AppContext {
   staging,
   production,
 }
+
+enum TaskStatus {
+  open,
+  done,
+  unknown,
+}
