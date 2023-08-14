@@ -27,6 +27,8 @@ mixin _$AppState {
   ThemeMode? get themeMode => throw _privateConstructorUsedError;
   @JsonKey(name: 'tasks_state')
   TasksState? get tasksState => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  Wait? get wait => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,7 +47,8 @@ abstract class $AppStateCopyWith<$Res> {
           defaultValue: ThemeMode.light,
           unknownEnumValue: ThemeMode.system)
       ThemeMode? themeMode,
-      @JsonKey(name: 'tasks_state') TasksState? tasksState});
+      @JsonKey(name: 'tasks_state') TasksState? tasksState,
+      @JsonKey(includeFromJson: false, includeToJson: false) Wait? wait});
 
   $TasksStateCopyWith<$Res>? get tasksState;
 }
@@ -65,6 +68,7 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
   $Res call({
     Object? themeMode = freezed,
     Object? tasksState = freezed,
+    Object? wait = freezed,
   }) {
     return _then(_value.copyWith(
       themeMode: freezed == themeMode
@@ -75,6 +79,10 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
           ? _value.tasksState
           : tasksState // ignore: cast_nullable_to_non_nullable
               as TasksState?,
+      wait: freezed == wait
+          ? _value.wait
+          : wait // ignore: cast_nullable_to_non_nullable
+              as Wait?,
     ) as $Val);
   }
 
@@ -104,7 +112,8 @@ abstract class _$$_AppStateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
           defaultValue: ThemeMode.light,
           unknownEnumValue: ThemeMode.system)
       ThemeMode? themeMode,
-      @JsonKey(name: 'tasks_state') TasksState? tasksState});
+      @JsonKey(name: 'tasks_state') TasksState? tasksState,
+      @JsonKey(includeFromJson: false, includeToJson: false) Wait? wait});
 
   @override
   $TasksStateCopyWith<$Res>? get tasksState;
@@ -123,6 +132,7 @@ class __$$_AppStateCopyWithImpl<$Res>
   $Res call({
     Object? themeMode = freezed,
     Object? tasksState = freezed,
+    Object? wait = freezed,
   }) {
     return _then(_$_AppState(
       themeMode: freezed == themeMode
@@ -133,6 +143,10 @@ class __$$_AppStateCopyWithImpl<$Res>
           ? _value.tasksState
           : tasksState // ignore: cast_nullable_to_non_nullable
               as TasksState?,
+      wait: freezed == wait
+          ? _value.wait
+          : wait // ignore: cast_nullable_to_non_nullable
+              as Wait?,
     ));
   }
 }
@@ -146,7 +160,8 @@ class _$_AppState implements _AppState {
           defaultValue: ThemeMode.light,
           unknownEnumValue: ThemeMode.system)
       this.themeMode,
-      @JsonKey(name: 'tasks_state') this.tasksState});
+      @JsonKey(name: 'tasks_state') this.tasksState,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.wait});
 
   factory _$_AppState.fromJson(Map<String, dynamic> json) =>
       _$$_AppStateFromJson(json);
@@ -160,10 +175,13 @@ class _$_AppState implements _AppState {
   @override
   @JsonKey(name: 'tasks_state')
   final TasksState? tasksState;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final Wait? wait;
 
   @override
   String toString() {
-    return 'AppState(themeMode: $themeMode, tasksState: $tasksState)';
+    return 'AppState(themeMode: $themeMode, tasksState: $tasksState, wait: $wait)';
   }
 
   @override
@@ -174,12 +192,13 @@ class _$_AppState implements _AppState {
             (identical(other.themeMode, themeMode) ||
                 other.themeMode == themeMode) &&
             (identical(other.tasksState, tasksState) ||
-                other.tasksState == tasksState));
+                other.tasksState == tasksState) &&
+            (identical(other.wait, wait) || other.wait == wait));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, themeMode, tasksState);
+  int get hashCode => Object.hash(runtimeType, themeMode, tasksState, wait);
 
   @JsonKey(ignore: true)
   @override
@@ -197,13 +216,14 @@ class _$_AppState implements _AppState {
 
 abstract class _AppState implements AppState {
   factory _AppState(
-          {@JsonKey(
-              name: 'theme',
-              defaultValue: ThemeMode.light,
-              unknownEnumValue: ThemeMode.system)
-          final ThemeMode? themeMode,
-          @JsonKey(name: 'tasks_state') final TasksState? tasksState}) =
-      _$_AppState;
+      {@JsonKey(
+          name: 'theme',
+          defaultValue: ThemeMode.light,
+          unknownEnumValue: ThemeMode.system)
+      final ThemeMode? themeMode,
+      @JsonKey(name: 'tasks_state') final TasksState? tasksState,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      final Wait? wait}) = _$_AppState;
 
   factory _AppState.fromJson(Map<String, dynamic> json) = _$_AppState.fromJson;
 
@@ -216,6 +236,9 @@ abstract class _AppState implements AppState {
   @override
   @JsonKey(name: 'tasks_state')
   TasksState? get tasksState;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  Wait? get wait;
   @override
   @JsonKey(ignore: true)
   _$$_AppStateCopyWith<_$_AppState> get copyWith =>

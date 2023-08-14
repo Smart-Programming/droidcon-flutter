@@ -20,6 +20,8 @@ TaskEntity _$TaskEntityFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TaskEntity {
+  @JsonKey(name: 'id')
+  String? get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'status', unknownEnumValue: TaskStatus.unknown)
   TaskStatus? get taskStatus => throw _privateConstructorUsedError;
   @JsonKey(name: 'name')
@@ -42,7 +44,8 @@ abstract class $TaskEntityCopyWith<$Res> {
       _$TaskEntityCopyWithImpl<$Res, TaskEntity>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'status', unknownEnumValue: TaskStatus.unknown)
+      {@JsonKey(name: 'id') String? id,
+      @JsonKey(name: 'status', unknownEnumValue: TaskStatus.unknown)
       TaskStatus? taskStatus,
       @JsonKey(name: 'name') String? name,
       @JsonKey(name: 'created_at') String? createdAt,
@@ -62,12 +65,17 @@ class _$TaskEntityCopyWithImpl<$Res, $Val extends TaskEntity>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? taskStatus = freezed,
     Object? name = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       taskStatus: freezed == taskStatus
           ? _value.taskStatus
           : taskStatus // ignore: cast_nullable_to_non_nullable
@@ -97,7 +105,8 @@ abstract class _$$_TaskEntityCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'status', unknownEnumValue: TaskStatus.unknown)
+      {@JsonKey(name: 'id') String? id,
+      @JsonKey(name: 'status', unknownEnumValue: TaskStatus.unknown)
       TaskStatus? taskStatus,
       @JsonKey(name: 'name') String? name,
       @JsonKey(name: 'created_at') String? createdAt,
@@ -115,12 +124,17 @@ class __$$_TaskEntityCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? taskStatus = freezed,
     Object? name = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
     return _then(_$_TaskEntity(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       taskStatus: freezed == taskStatus
           ? _value.taskStatus
           : taskStatus // ignore: cast_nullable_to_non_nullable
@@ -145,7 +159,8 @@ class __$$_TaskEntityCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_TaskEntity implements _TaskEntity {
   _$_TaskEntity(
-      {@JsonKey(name: 'status', unknownEnumValue: TaskStatus.unknown)
+      {@JsonKey(name: 'id') this.id,
+      @JsonKey(name: 'status', unknownEnumValue: TaskStatus.unknown)
       this.taskStatus,
       @JsonKey(name: 'name') this.name,
       @JsonKey(name: 'created_at') this.createdAt,
@@ -154,6 +169,9 @@ class _$_TaskEntity implements _TaskEntity {
   factory _$_TaskEntity.fromJson(Map<String, dynamic> json) =>
       _$$_TaskEntityFromJson(json);
 
+  @override
+  @JsonKey(name: 'id')
+  final String? id;
   @override
   @JsonKey(name: 'status', unknownEnumValue: TaskStatus.unknown)
   final TaskStatus? taskStatus;
@@ -169,7 +187,7 @@ class _$_TaskEntity implements _TaskEntity {
 
   @override
   String toString() {
-    return 'TaskEntity(taskStatus: $taskStatus, name: $name, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'TaskEntity(id: $id, taskStatus: $taskStatus, name: $name, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -177,6 +195,7 @@ class _$_TaskEntity implements _TaskEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TaskEntity &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.taskStatus, taskStatus) ||
                 other.taskStatus == taskStatus) &&
             (identical(other.name, name) || other.name == name) &&
@@ -189,7 +208,7 @@ class _$_TaskEntity implements _TaskEntity {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, taskStatus, name, createdAt, updatedAt);
+      Object.hash(runtimeType, id, taskStatus, name, createdAt, updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -207,7 +226,8 @@ class _$_TaskEntity implements _TaskEntity {
 
 abstract class _TaskEntity implements TaskEntity {
   factory _TaskEntity(
-      {@JsonKey(name: 'status', unknownEnumValue: TaskStatus.unknown)
+      {@JsonKey(name: 'id') final String? id,
+      @JsonKey(name: 'status', unknownEnumValue: TaskStatus.unknown)
       final TaskStatus? taskStatus,
       @JsonKey(name: 'name') final String? name,
       @JsonKey(name: 'created_at') final String? createdAt,
@@ -216,6 +236,9 @@ abstract class _TaskEntity implements TaskEntity {
   factory _TaskEntity.fromJson(Map<String, dynamic> json) =
       _$_TaskEntity.fromJson;
 
+  @override
+  @JsonKey(name: 'id')
+  String? get id;
   @override
   @JsonKey(name: 'status', unknownEnumValue: TaskStatus.unknown)
   TaskStatus? get taskStatus;

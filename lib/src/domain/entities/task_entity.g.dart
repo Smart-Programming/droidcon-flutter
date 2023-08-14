@@ -8,6 +8,7 @@ part of 'task_entity.dart';
 
 _$_TaskEntity _$$_TaskEntityFromJson(Map<String, dynamic> json) =>
     _$_TaskEntity(
+      id: json['id'] as String?,
       taskStatus: $enumDecodeNullable(_$TaskStatusEnumMap, json['status'],
           unknownValue: TaskStatus.unknown),
       name: json['name'] as String?,
@@ -17,6 +18,7 @@ _$_TaskEntity _$$_TaskEntityFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_TaskEntityToJson(_$_TaskEntity instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'status': _$TaskStatusEnumMap[instance.taskStatus],
       'name': instance.name,
       'created_at': instance.createdAt,
