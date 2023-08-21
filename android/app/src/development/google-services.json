@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "356441453424",
+    "project_id": "droidcon-flutter-dev",
+    "storage_bucket": "droidcon-flutter-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:356441453424:android:f832cf3b19b4d3b97b15b5",
+        "android_client_info": {
+          "package_name": "com.droidcon_flutter.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "356441453424-qiem81ivst57rojpd4ndt22utkblg7ac.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCP5Q-U1s1NFQA0UGQRfDB5kO29MluNAP8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "356441453424-qiem81ivst57rojpd4ndt22utkblg7ac.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

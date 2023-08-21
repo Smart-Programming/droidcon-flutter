@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.droidcon_flutter">
+    package="com.droidcon_flutter">
    <application
         android:label="droidcon_flutter"
         android:name="${applicationName}"
