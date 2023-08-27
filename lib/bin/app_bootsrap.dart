@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 /// [appBootstrap] is a function that will determine the entry point into the
 /// application. From this entry-point, we can handle any initializations and
 /// pre-launch checks necessary for the application to work properly.
-Future<void> appBootstrap({
+FutureOr<void> appBootstrap({
   AppContext appContext = AppContext.development,
 }) async {
   WidgetsFlutterBinding.ensureInitialized();
