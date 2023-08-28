@@ -113,8 +113,14 @@ jobs:
           echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/key.properties
           echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
 
+      - name: Create .env
+        run: |
+          chmod +x ./setup_env.sh
+          ./setup_env.sh
+
+
       # Build apk.
-      - run: flutter build apk --flavor development -t lib/bin/envs/main_development.dart --build-name=droidcon-flutter-dev  --release
+      - run: flutter build apk --flavor development -t lib/bin/envs/main_development.dart --release
       - uses: actions/upload-artifact@v1
         with:
           name: release-apk
