@@ -1,4 +1,4 @@
-package com.example.droidcon_flutter
+package com.droidcon_flutter
 
 import io.flutter.embedding.android.FlutterActivity
 
