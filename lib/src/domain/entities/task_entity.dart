@@ -7,6 +7,7 @@ part 'task_entity.g.dart';
 @freezed
 class TaskEntity with _$TaskEntity {
   factory TaskEntity({
+    @JsonKey(name: 'id') String? id,
     @JsonKey(name: 'status', unknownEnumValue: TaskStatus.unknown)
     TaskStatus? taskStatus,
     @JsonKey(name: 'name') String? name,

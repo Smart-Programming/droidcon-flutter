@@ -1,3 +1,4 @@
+import 'package:async_redux/async_redux.dart';
 import 'package:droidcon_flutter/src/application/state/states/tasks/tasks_state.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -15,6 +16,11 @@ class AppState with _$AppState {
     )
     ThemeMode? themeMode,
     @JsonKey(name: 'tasks_state') TasksState? tasksState,
+    @JsonKey(
+      includeFromJson: false,
+      includeToJson: false,
+    )
+    Wait? wait,
   }) = _AppState;
 
   factory AppState.fromJson(Map<String, dynamic> json) =>
@@ -23,5 +29,6 @@ class AppState with _$AppState {
   factory AppState.initial() => AppState(
         tasksState: TasksState.initial(),
         themeMode: ThemeMode.light,
+        wait: Wait(),
       );
 }
