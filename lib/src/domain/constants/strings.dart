@@ -7,9 +7,11 @@ class AppStrings {
   static const String appName = 'Droidcon Flutter';
   static const String landingPageTitle = 'Landing Page';
   static const String landingPageDescription =
-      'From here, we can begin our development process';
+      'From here, we can begin our journey!';
   static const String dashboardPageTitle = 'Dashboard';
   static const String dashboardPageDescription =
       'We can proceed to develop the dashboard pages from here';
   static const String proceedText = 'Proceed';
+  static const String kanbanText = 'Kanban Board';
+  static const String documentationText = 'Documentation';
 }
