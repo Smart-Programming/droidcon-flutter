@@ -32,9 +32,12 @@ mixin _$TaskEntity {
   @HiveField(3)
   @JsonKey(name: 'updated_at')
   String? get updatedAt => throw _privateConstructorUsedError;
-  @HiveField(4)
+  @HiveType(typeId: 2)
   @JsonKey(name: 'status', unknownEnumValue: TaskStatus.unknown)
   TaskStatus? get taskStatus => throw _privateConstructorUsedError;
+  @HiveField(5)
+  @JsonKey(name: 'sort_order')
+  int? get sortOrder => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,9 +56,10 @@ abstract class $TaskEntityCopyWith<$Res> {
       @HiveField(1) @JsonKey(name: 'name') String? name,
       @HiveField(2) @JsonKey(name: 'created_at') String? createdAt,
       @HiveField(3) @JsonKey(name: 'updated_at') String? updatedAt,
-      @HiveField(4)
+      @HiveType(typeId: 2)
       @JsonKey(name: 'status', unknownEnumValue: TaskStatus.unknown)
-      TaskStatus? taskStatus});
+      TaskStatus? taskStatus,
+      @HiveField(5) @JsonKey(name: 'sort_order') int? sortOrder});
 }
 
 /// @nodoc
@@ -76,6 +80,7 @@ class _$TaskEntityCopyWithImpl<$Res, $Val extends TaskEntity>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? taskStatus = freezed,
+    Object? sortOrder = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -98,6 +103,10 @@ class _$TaskEntityCopyWithImpl<$Res, $Val extends TaskEntity>
           ? _value.taskStatus
           : taskStatus // ignore: cast_nullable_to_non_nullable
               as TaskStatus?,
+      sortOrder: freezed == sortOrder
+          ? _value.sortOrder
+          : sortOrder // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -115,9 +124,10 @@ abstract class _$$_TaskEntityCopyWith<$Res>
       @HiveField(1) @JsonKey(name: 'name') String? name,
       @HiveField(2) @JsonKey(name: 'created_at') String? createdAt,
       @HiveField(3) @JsonKey(name: 'updated_at') String? updatedAt,
-      @HiveField(4)
+      @HiveType(typeId: 2)
       @JsonKey(name: 'status', unknownEnumValue: TaskStatus.unknown)
-      TaskStatus? taskStatus});
+      TaskStatus? taskStatus,
+      @HiveField(5) @JsonKey(name: 'sort_order') int? sortOrder});
 }
 
 /// @nodoc
@@ -136,6 +146,7 @@ class __$$_TaskEntityCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? taskStatus = freezed,
+    Object? sortOrder = freezed,
   }) {
     return _then(_$_TaskEntity(
       id: freezed == id
@@ -158,6 +169,10 @@ class __$$_TaskEntityCopyWithImpl<$Res>
           ? _value.taskStatus
           : taskStatus // ignore: cast_nullable_to_non_nullable
               as TaskStatus?,
+      sortOrder: freezed == sortOrder
+          ? _value.sortOrder
+          : sortOrder // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -170,9 +185,10 @@ class _$_TaskEntity implements _TaskEntity {
       @HiveField(1) @JsonKey(name: 'name') this.name,
       @HiveField(2) @JsonKey(name: 'created_at') this.createdAt,
       @HiveField(3) @JsonKey(name: 'updated_at') this.updatedAt,
-      @HiveField(4)
+      @HiveType(typeId: 2)
       @JsonKey(name: 'status', unknownEnumValue: TaskStatus.unknown)
-      this.taskStatus});
+      this.taskStatus,
+      @HiveField(5) @JsonKey(name: 'sort_order') this.sortOrder});
 
   factory _$_TaskEntity.fromJson(Map<String, dynamic> json) =>
       _$$_TaskEntityFromJson(json);
@@ -194,13 +210,17 @@ class _$_TaskEntity implements _TaskEntity {
   @JsonKey(name: 'updated_at')
   final String? updatedAt;
   @override
-  @HiveField(4)
+  @HiveType(typeId: 2)
   @JsonKey(name: 'status', unknownEnumValue: TaskStatus.unknown)
   final TaskStatus? taskStatus;
+  @override
+  @HiveField(5)
+  @JsonKey(name: 'sort_order')
+  final int? sortOrder;
 
   @override
   String toString() {
-    return 'TaskEntity(id: $id, name: $name, createdAt: $createdAt, updatedAt: $updatedAt, taskStatus: $taskStatus)';
+    return 'TaskEntity(id: $id, name: $name, createdAt: $createdAt, updatedAt: $updatedAt, taskStatus: $taskStatus, sortOrder: $sortOrder)';
   }
 
   @override
@@ -215,13 +235,15 @@ class _$_TaskEntity implements _TaskEntity {
             (identical(other.updatedAt, updatedAt) ||
                 other.updatedAt == updatedAt) &&
             (identical(other.taskStatus, taskStatus) ||
-                other.taskStatus == taskStatus));
+                other.taskStatus == taskStatus) &&
+            (identical(other.sortOrder, sortOrder) ||
+                other.sortOrder == sortOrder));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, createdAt, updatedAt, taskStatus);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, createdAt, updatedAt, taskStatus, sortOrder);
 
   @JsonKey(ignore: true)
   @override
@@ -239,13 +261,15 @@ class _$_TaskEntity implements _TaskEntity {
 
 abstract class _TaskEntity implements TaskEntity {
   factory _TaskEntity(
-      {@HiveField(0) @JsonKey(name: 'id') final String? id,
-      @HiveField(1) @JsonKey(name: 'name') final String? name,
-      @HiveField(2) @JsonKey(name: 'created_at') final String? createdAt,
-      @HiveField(3) @JsonKey(name: 'updated_at') final String? updatedAt,
-      @HiveField(4)
-      @JsonKey(name: 'status', unknownEnumValue: TaskStatus.unknown)
-      final TaskStatus? taskStatus}) = _$_TaskEntity;
+          {@HiveField(0) @JsonKey(name: 'id') final String? id,
+          @HiveField(1) @JsonKey(name: 'name') final String? name,
+          @HiveField(2) @JsonKey(name: 'created_at') final String? createdAt,
+          @HiveField(3) @JsonKey(name: 'updated_at') final String? updatedAt,
+          @HiveType(typeId: 2)
+          @JsonKey(name: 'status', unknownEnumValue: TaskStatus.unknown)
+          final TaskStatus? taskStatus,
+          @HiveField(5) @JsonKey(name: 'sort_order') final int? sortOrder}) =
+      _$_TaskEntity;
 
   factory _TaskEntity.fromJson(Map<String, dynamic> json) =
       _$_TaskEntity.fromJson;
@@ -267,9 +291,13 @@ abstract class _TaskEntity implements TaskEntity {
   @JsonKey(name: 'updated_at')
   String? get updatedAt;
   @override
-  @HiveField(4)
+  @HiveType(typeId: 2)
   @JsonKey(name: 'status', unknownEnumValue: TaskStatus.unknown)
   TaskStatus? get taskStatus;
+  @override
+  @HiveField(5)
+  @JsonKey(name: 'sort_order')
+  int? get sortOrder;
   @override
   @JsonKey(ignore: true)
   _$$_TaskEntityCopyWith<_$_TaskEntity> get copyWith =>

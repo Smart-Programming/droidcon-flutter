@@ -2,19 +2,15 @@ import 'package:async_redux/async_redux.dart';
 import 'package:droidcon_flutter/bin/app_wrapper.dart';
 import 'package:droidcon_flutter/src/application/state/actions/tasks/create_task_action.dart';
 import 'package:droidcon_flutter/src/application/state/actions/tasks/find_all_tasks_action.dart';
-import 'package:droidcon_flutter/src/application/state/actions/tasks/update_tasks_state_action.dart';
+import 'package:droidcon_flutter/src/application/state/actions/tasks/update_task_status_action.dart';
 import 'package:droidcon_flutter/src/application/state/app_state.dart';
 import 'package:droidcon_flutter/src/application/state/view_models/task_board_view_model.dart';
+import 'package:droidcon_flutter/src/application/utils/dialog_box.dart';
 import 'package:droidcon_flutter/src/application/utils/to_do_tile.dart';
 import 'package:droidcon_flutter/src/domain/constants/enums.dart';
 import 'package:droidcon_flutter/src/domain/entities/task_entity.dart';
-import 'package:droidcon_flutter/src/domain/interfaces/i_data_source_facade.dart';
-import 'package:droidcon_flutter/src/infrastructure/database/hive/hive.dart';
-import 'package:droidcon_flutter/src/infrastructure/database/hive/task_database.dart';
-import 'package:hive/hive.dart';
-import 'package:droidcon_flutter/src/application/utils/dialog_box.dart';
-import 'package:droidcon_flutter/src/application/utils/global_container.dart';
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 
 class TaskBoard extends StatefulWidget {
   const TaskBoard({super.key});
@@ -24,46 +20,70 @@ class TaskBoard extends StatefulWidget {
 }
 
 class _TaskBoardState extends State<TaskBoard> {
-  final _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
 
-  void saveNewTask() {
+  void saveNewTask(int sortOrder) {
     StoreProvider.dispatch(
       context,
       CreateTaskAction(
-        // TODO: Populate task entity with data
-        task: TaskEntity(),
+        task: TaskEntity(
+          id: Uuid().v4(),
+          name: _controller.text,
+          taskStatus: TaskStatus.open,
+          sortOrder: sortOrder,
+        ),
         repository: AppWrapper.of(context).tasksRepository!,
         context: context,
       ),
     );
+    _controller.clear();
     Navigator.of(context).pop();
   }
 
-  void addNewTask() {
+  void addNewTask(TaskBoardViewModel vm) {
     showDialog(
         context: context,
-        builder: (context) {
+        builder: (BuildContext context) {
           return DialogBox(
             controller: _controller,
-            onSave: saveNewTask,
+            onSave: () => saveNewTask(
+                vm.tasks.isEmpty ? 1 : vm.tasks.last.sortOrder! + 1),
           );
         });
   }
 
-  void deleteTask(int index, TaskBoardViewModel vm) {}
+  void deleteTask(int index, TaskBoardViewModel vm) {
+    vm.deleteTask(
+      repository: AppWrapper.of(context).tasksRepository!,
+      context: context,
+      task: vm.tasks[index],
+    );
+  }
 
   void checkBoxChange(bool? value, int index, TaskBoardViewModel vm) {
-    StoreProvider.dispatch(context, UpdateTasksStateAction());
+    StoreProvider.dispatch(
+        context,
+        UpdateTaskStatusAction(
+          repository: AppWrapper.of(context).tasksRepository!,
+          context: context,
+          task: vm.tasks[index].copyWith(
+            taskStatus: value != null && value == true
+                ? TaskStatus.done
+                : TaskStatus.open,
+          ),
+        ));
   }
 
   void reorderData(int oldindex, int newindex, TaskBoardViewModel vm) {
-    setState(() {
-      if (newindex > oldindex) {
-        newindex -= 1;
-      }
-      final tasks = vm.tasks.removeAt(oldindex);
-      vm.tasks.insert(newindex, tasks);
-    });
+    TaskEntity oldTask = vm.tasks[oldindex];
+    TaskEntity newTask = vm.tasks[newindex];
+
+    vm.reOrderTasks(
+      context: context,
+      repository: AppWrapper.of(context).tasksRepository!,
+      newTask: newTask,
+      oldTask: oldTask,
+    );
   }
 
   void sorting(TaskBoardViewModel vm) {
@@ -80,27 +100,10 @@ class _TaskBoardState extends State<TaskBoard> {
               image: AssetImage('assets/landing.jpg'),
               fit: BoxFit.cover,
               opacity: .4)),
-      child: Scaffold(
-        // backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          title: const Text(
-            'DRAGGABLE TASKS',
-            style: TextStyle(
-                color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
-          ),
-          centerTitle: true,
-          backgroundColor: Colors.black.withOpacity(.4),
-          toolbarHeight: 40,
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => addNewTask(),
-          backgroundColor: Colors.amber,
-          child: const Icon(Icons.add),
-        ),
-        body: StoreConnector<AppState, TaskBoardViewModel>(
+      child: StoreConnector<AppState, TaskBoardViewModel>(
           converter: (Store<AppState> store) =>
               TaskBoardViewModel.fromStore(store),
-          onInit: (store) {
+          onInit: (Store<AppState> store) {
             store.dispatch(
               FindAllTasks(
                 repository: AppWrapper.of(context).tasksRepository!,
@@ -109,47 +112,61 @@ class _TaskBoardState extends State<TaskBoard> {
             );
           },
           builder: (BuildContext context, TaskBoardViewModel vm) {
-            if (vm.tasks.isEmpty) {
-              return const Center(
-                child: Text(
-                  'No Tasks in List!',
+            return Scaffold(
+              // backgroundColor: Colors.transparent,
+              appBar: AppBar(
+                title: const Text(
+                  'DRAGGABLE TASKS',
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 18,
+                      fontSize: 15,
                       fontWeight: FontWeight.bold),
                 ),
-              );
-            }
+                centerTitle: true,
+                backgroundColor: Colors.black.withOpacity(.4),
+                toolbarHeight: 40,
+              ),
+              floatingActionButton: FloatingActionButton(
+                onPressed: () => addNewTask(vm),
+                backgroundColor: Colors.amber,
+                child: const Icon(Icons.add),
+              ),
+              body: Builder(
+                builder: (BuildContext context) {
+                  if (vm.tasks.isEmpty) {
+                    return const Center(
+                      child: Text(
+                        'No Tasks in List!',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    );
+                  }
 
-            return ReorderableListView(
-              physics: const BouncingScrollPhysics(),
-              onReorder: (int a, int b) => reorderData(a, b, vm),
-              children: vm.tasks
-                  .map(
-                    (task) => ToDoTile(
-                      key: Key("$task"),
-                      name: task.name ?? '',
-                      completed: task.taskStatus == TaskStatus.done,
-                      onChanged: (value) {},
-                      deleteFn: () => deleteTask,
-                    ),
-                  )
-                  .toList(),
+                  return ReorderableListView(
+                    physics: const BouncingScrollPhysics(),
+                    onReorder: (int a, int b) => reorderData(a, b, vm),
+                    children: vm.tasks
+                        .map(
+                          (TaskEntity task) => ToDoTile(
+                            key: Key(Uuid().v4().toString()),
+                            name: task.name ?? '',
+                            completed: task.taskStatus == TaskStatus.done,
+                            onChanged: (bool? value) {
+                              checkBoxChange(value, vm.tasks.indexOf(task), vm);
+                            },
+                            deleteFn: () =>
+                                deleteTask(vm.tasks.indexOf(task), vm),
+                          ),
+                        )
+                        .toList(),
+                  );
+                },
+              ),
             );
-            // return ListView.builder(
-            //   itemCount: vm.tasks.length,
-            //   itemBuilder: (BuildContext context, int index) {
-            //     return ListTile(
-            //       title: Text(
-            //         vm.tasks[index].name ?? '',
-            //         style: TextStyle(color: Colors.white),
-            //       ),
-            //     );
-            //   },
-            // );
-          },
-        ),
-      ),
+          }),
     );
   }
 }

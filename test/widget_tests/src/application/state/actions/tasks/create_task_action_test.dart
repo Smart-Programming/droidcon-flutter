@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:math';
 
 import 'package:async_redux/async_redux.dart';
@@ -26,7 +25,7 @@ void main() {
             taskStatus: TaskStatus.done,
           );
 
-          when(mockTaskDatabase.create(data: jsonEncode(task))).thenAnswer(
+          when(mockTaskDatabase.create(data: task)).thenAnswer(
             (_) async => Future<TaskEntity>.value(
               task.copyWith(
                 id: Random.secure().toString(),

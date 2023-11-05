@@ -13,9 +13,10 @@ class TaskEntity with _$TaskEntity {
     @HiveField(1) @JsonKey(name: 'name') String? name,
     @HiveField(2) @JsonKey(name: 'created_at') String? createdAt,
     @HiveField(3) @JsonKey(name: 'updated_at') String? updatedAt,
-    @HiveField(4)
+    @HiveType(typeId: 2)
     @JsonKey(name: 'status', unknownEnumValue: TaskStatus.unknown)
     TaskStatus? taskStatus,
+    @HiveField(5) @JsonKey(name: 'sort_order') int? sortOrder,
   }) = _TaskEntity;
 
   factory TaskEntity.fromJson(Map<String, dynamic> json) =>

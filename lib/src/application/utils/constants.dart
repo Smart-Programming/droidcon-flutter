@@ -1,22 +1,11 @@
+// ignore_for_file: avoid_classes_with_only_static_members
+
 import 'package:flutter/material.dart';
 
 class UtilityClass {
-  List tasks = [
-    {'name': 'Shopping', 'completed': true},
-    {'name': 'Hitting the gym', 'completed': false},
-    {'name': 'Lunch with Mum', 'completed': true},
-    {'name': 'Group meeting', 'completed': false},
-    {'name': 'Draft client proposal', 'completed': false},
-    {'name': 'Quick team recap', 'completed': true},
-    {'name': 'New app features review', 'completed': false},
-    {'name': 'Read weekly book', 'completed': false},
-    {'name': 'Grab lunch with Alex', 'completed': true},
-    {'name': 'Do laundry', 'completed': true},
-  ];
-
-  static textFormDecoration(
+  static InputDecoration textFormDecoration(
       BuildContext context, String labelText, IconData prefixIcon) {
-    final decoration = InputDecoration(
+    final InputDecoration decoration = InputDecoration(
       prefixIcon: Icon(
         prefixIcon,
         size: 18,

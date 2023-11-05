@@ -49,7 +49,7 @@ class _LandingPageState extends State<LandingPage>
                 height: MediaQuery.of(context).size.height / 1.5,
                 width: MediaQuery.of(context).size.width / 2,
                 controller: _animationController,
-                onLoaded: (composition) {
+                onLoaded: (LottieComposition composition) {
                   _animationController
                     ..duration = composition.duration
                     ..forward();

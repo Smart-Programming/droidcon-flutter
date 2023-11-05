@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:droidcon_flutter/src/application/utils/constants.dart';
 
 class TextFormFieldWidget extends StatefulWidget {
-  final title;
-  final controller;
-  final prefixIcon;
-  final keyBoardType;
+  final String title;
+  final TextEditingController controller;
+  final IconData prefixIcon;
+  final TextInputType keyBoardType;
   const TextFormFieldWidget(
       {Key? key,
       required this.title,
@@ -20,10 +20,10 @@ class TextFormFieldWidget extends StatefulWidget {
 }
 
 class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
-  final title;
-  final controller;
-  final prefixIcon;
-  final keyBoardType;
+  final String title;
+  final TextEditingController controller;
+  final IconData prefixIcon;
+  final TextInputType keyBoardType;
   _TextFormFieldWidgetState(
       this.title, this.controller, this.prefixIcon, this.keyBoardType);
 
@@ -38,7 +38,7 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
         cursorColor: Colors.black,
         keyboardType: keyBoardType,
         decoration: UtilityClass.textFormDecoration(context, title, prefixIcon),
-        validator: (value) {
+        validator: (String? value) {
           if (value == null || value.isEmpty) {
             return '$title is required!';
           }

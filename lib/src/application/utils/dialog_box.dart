@@ -3,8 +3,8 @@ import 'package:droidcon_flutter/src/application/utils/text_form_field_widget.da
 import 'package:droidcon_flutter/src/application/utils/button.dart';
 
 class DialogBox extends StatelessWidget {
-  final controller;
-  VoidCallback onSave;
+  final TextEditingController controller;
+  final VoidCallback onSave;
   DialogBox({super.key, required this.onSave, required this.controller});
 
   @override
@@ -13,9 +13,9 @@ class DialogBox extends StatelessWidget {
       backgroundColor: Colors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       alignment: Alignment.center,
-      actions: [
+      actions: <Widget>[
         Column(
-          children: [
+          children: <Widget>[
             const SizedBox(height: 20),
             const Center(
                 child: Text(
@@ -36,7 +36,7 @@ class DialogBox extends StatelessWidget {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
+              children: <Widget>[
                 MyButton(title: 'Save', color: Colors.green, onPressed: onSave),
                 MyButton(
                     title: 'Cancel',
@@ -48,6 +48,5 @@ class DialogBox extends StatelessWidget {
         ),
       ],
     );
-    ;
   }
 }

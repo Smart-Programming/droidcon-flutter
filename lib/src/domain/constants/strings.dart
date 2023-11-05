@@ -14,4 +14,5 @@ class AppStrings {
   static const String proceedText = 'Proceed';
   static const String kanbanText = 'Kanban Board';
   static const String documentationText = 'Documentation';
+  static const String presentationText = 'Presentation';
 }

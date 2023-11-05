@@ -21,8 +21,7 @@ class TaskEntityAdapter extends TypeAdapter<TaskEntity> {
       name: fields[1] as String?,
       createdAt: fields[2] as String?,
       updatedAt: fields[3] as String?,
-      taskStatus: TaskStatus.values
-          .firstWhere((element) => element.name == fields[4].toString()),
+      sortOrder: fields[5] as int?,
     );
   }
 
@@ -38,8 +37,8 @@ class TaskEntityAdapter extends TypeAdapter<TaskEntity> {
       ..write(obj.createdAt)
       ..writeByte(3)
       ..write(obj.updatedAt)
-      ..writeByte(4)
-      ..write(obj.taskStatus?.name);
+      ..writeByte(5)
+      ..write(obj.sortOrder);
   }
 
   @override
@@ -65,6 +64,7 @@ _$_TaskEntity _$$_TaskEntityFromJson(Map<String, dynamic> json) =>
       updatedAt: json['updated_at'] as String?,
       taskStatus: $enumDecodeNullable(_$TaskStatusEnumMap, json['status'],
           unknownValue: TaskStatus.unknown),
+      sortOrder: json['sort_order'] as int?,
     );
 
 Map<String, dynamic> _$$_TaskEntityToJson(_$_TaskEntity instance) =>
@@ -74,6 +74,7 @@ Map<String, dynamic> _$$_TaskEntityToJson(_$_TaskEntity instance) =>
       'created_at': instance.createdAt,
       'updated_at': instance.updatedAt,
       'status': _$TaskStatusEnumMap[instance.taskStatus],
+      'sort_order': instance.sortOrder,
     };
 
 const _$TaskStatusEnumMap = {

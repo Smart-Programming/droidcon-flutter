@@ -6,12 +6,12 @@ enum AppContext {
   production,
 }
 
-@HiveField(4)
+@HiveType(typeId: 2)
 enum TaskStatus {
-  @HiveField(1)
+  @HiveField(1, defaultValue: 'open')
   open,
-  @HiveField(2)
+  @HiveField(2, defaultValue: 'done')
   done,
-  @HiveField(3)
+  @HiveField(3, defaultValue: 'unknown')
   unknown,
 }

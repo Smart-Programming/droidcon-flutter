@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_classes_with_only_static_members
+
 import 'package:flutter/material.dart';
 
 class Styles {
@@ -7,10 +9,10 @@ class Styles {
   static Color subTextColor = const Color(0xFF766A44);
 }
 
-fullWidth(BuildContext context) {
+double fullWidth(BuildContext context) {
   return MediaQuery.of(context).size.width;
 }
 
-fullHeight(BuildContext context) {
+double fullHeight(BuildContext context) {
   return MediaQuery.of(context).size.height;
 }
