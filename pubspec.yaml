@@ -97,8 +97,11 @@ flutter:
   assets:
     - assets/flutter_testing.md
     - assets/flutter_infrastructure.md
+    - assets/layered_architecture.md
     - assets/logo.zip
     - assets/landing.jpg
     - assets/linkedIn.jpg
     - assets/lottie/logo.json
     - assets/lottie/building.json
+    - assets/ddd.png
+    - assets/layout.png
