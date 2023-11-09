@@ -67,7 +67,7 @@ class _SingleTopicPageState extends State<SingleTopicPage> {
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              _TopicHeadline(),
+              _TopicHeadline(title: widget.props.topic),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Row(
@@ -151,9 +151,9 @@ class _SingleTopicPageState extends State<SingleTopicPage> {
 }
 
 class _TopicHeadline extends StatelessWidget {
-  const _TopicHeadline({
-    super.key,
-  });
+  const _TopicHeadline({super.key, required this.title});
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -166,7 +166,7 @@ class _TopicHeadline extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.15,
           ),
-          Text('Architecture \nwith Testing',
+          Text(title,
               style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
