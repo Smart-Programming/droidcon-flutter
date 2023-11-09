@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:droidcon_flutter/src/domain/entities/task_entity.dart';
 import 'package:droidcon_flutter/src/domain/interfaces/i_data_source_facade.dart';
 import 'package:droidcon_flutter/src/domain/interfaces/tasks/i_task_repository.dart';
@@ -10,7 +8,7 @@ class TaskRepository extends ITaskRepository {
 
   @override
   Future<TaskEntity?> createTask(TaskEntity data) {
-    return this.db.create(data: jsonEncode(data));
+    return this.db.create(data: data);
   }
 
   @override
@@ -33,6 +31,6 @@ class TaskRepository extends ITaskRepository {
     required String id,
     required TaskEntity data,
   }) {
-    return this.db.update(id: id, data: jsonEncode(data));
+    return this.db.update(id: id, data: data);
   }
 }

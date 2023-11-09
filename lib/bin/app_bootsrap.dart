@@ -25,6 +25,7 @@ FutureOr<void> appBootstrap({
   /// their implementation (SOLID principals)
   ///
   final IDataSourceFacade<TaskEntity> dataSource = HiveTasksDatabase();
+  await dataSource.initDatabase();
   final ITaskRepository tasksRepository = TaskRepository(dataSource);
 
   /// This is the initialization of our entire application state.

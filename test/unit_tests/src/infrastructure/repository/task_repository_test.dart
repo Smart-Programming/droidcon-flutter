@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:math';
 
 import 'package:droidcon_flutter/src/domain/constants/enums.dart';
@@ -26,7 +25,7 @@ void main() {
       expect(task.createdAt, null);
       expect(task.id, null);
 
-      when(mockTaskDatabase.create(data: jsonEncode(task))).thenAnswer(
+      when(mockTaskDatabase.create(data: task)).thenAnswer(
         (_) async => Future<TaskEntity>.value(
           task.copyWith(
             id: Random.secure().toString(),
@@ -96,10 +95,8 @@ void main() {
       final String updatedName = 'Updated Name';
       when(mockTaskDatabase.update(
           id: id,
-          data: jsonEncode(
-            task.copyWith(
-              name: updatedName,
-            ),
+          data: task.copyWith(
+            name: updatedName,
           ))).thenAnswer(
         (_) async => Future<TaskEntity>.value(
           task.copyWith(

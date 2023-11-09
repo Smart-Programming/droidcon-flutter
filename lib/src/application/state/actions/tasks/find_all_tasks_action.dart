@@ -33,6 +33,17 @@ class FindAllTasks extends ReduxAction<AppState> {
   Future<AppState?> reduce() async {
     List<TaskEntity> results = await repository.findTasks();
 
+    List<TaskEntity> tasks = <TaskEntity>[];
+
+    results.forEach((TaskEntity task) {
+      tasks.add(task);
+    });
+
+    tasks
+      ..sort(
+        (TaskEntity a, TaskEntity b) => b.sortOrder!.compareTo(a.sortOrder!),
+      );
+
     store.dispatch(
       UpdateTasksStateAction(tasks: results),
     );

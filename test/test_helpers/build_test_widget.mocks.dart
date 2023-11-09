@@ -5,9 +5,9 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i4;
 
-import 'package:droidcon_flutter/src/domain/entities/task_entity.dart' as _i2;
+import 'package:droidcon_flutter/src/domain/entities/task_entity.dart' as _i3;
 import 'package:droidcon_flutter/src/domain/interfaces/i_data_source_facade.dart'
-    as _i3;
+    as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -21,69 +21,53 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeTaskEntity_0 extends _i1.SmartFake implements _i2.TaskEntity {
-  _FakeTaskEntity_0(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
 /// A class which mocks [IDataSourceFacade].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class TaskDatabaseMock extends _i1.Mock
-    implements _i3.IDataSourceFacade<_i2.TaskEntity> {
+    implements _i2.IDataSourceFacade<_i3.TaskEntity> {
   TaskDatabaseMock() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<_i2.TaskEntity> initDatabase() => (super.noSuchMethod(
+  _i4.Future<_i3.TaskEntity?> initDatabase() => (super.noSuchMethod(
         Invocation.method(
           #initDatabase,
           [],
         ),
-        returnValue: _i4.Future<_i2.TaskEntity>.value(_FakeTaskEntity_0(
-          this,
-          Invocation.method(
-            #initDatabase,
-            [],
-          ),
-        )),
-      ) as _i4.Future<_i2.TaskEntity>);
+        returnValue: _i4.Future<_i3.TaskEntity?>.value(),
+      ) as _i4.Future<_i3.TaskEntity?>);
   @override
-  _i4.Future<_i2.TaskEntity?> create({required dynamic data}) =>
+  _i4.Future<_i3.TaskEntity?> create({required dynamic data}) =>
       (super.noSuchMethod(
         Invocation.method(
           #create,
           [],
           {#data: data},
         ),
-        returnValue: _i4.Future<_i2.TaskEntity?>.value(),
-      ) as _i4.Future<_i2.TaskEntity?>);
+        returnValue: _i4.Future<_i3.TaskEntity?>.value(),
+      ) as _i4.Future<_i3.TaskEntity?>);
   @override
-  _i4.Future<List<_i2.TaskEntity>> findMany() => (super.noSuchMethod(
+  _i4.Future<List<_i3.TaskEntity>> findMany() => (super.noSuchMethod(
         Invocation.method(
           #findMany,
           [],
         ),
-        returnValue: _i4.Future<List<_i2.TaskEntity>>.value(<_i2.TaskEntity>[]),
-      ) as _i4.Future<List<_i2.TaskEntity>>);
+        returnValue: _i4.Future<List<_i3.TaskEntity>>.value(<_i3.TaskEntity>[]),
+      ) as _i4.Future<List<_i3.TaskEntity>>);
   @override
-  _i4.Future<_i2.TaskEntity?> findOne({required String? id}) =>
+  _i4.Future<_i3.TaskEntity?> findOne({required String? id}) =>
       (super.noSuchMethod(
         Invocation.method(
           #findOne,
           [],
           {#id: id},
         ),
-        returnValue: _i4.Future<_i2.TaskEntity?>.value(),
-      ) as _i4.Future<_i2.TaskEntity?>);
+        returnValue: _i4.Future<_i3.TaskEntity?>.value(),
+      ) as _i4.Future<_i3.TaskEntity?>);
   @override
-  _i4.Future<_i2.TaskEntity?> update({
+  _i4.Future<_i3.TaskEntity?> update({
     required String? id,
     dynamic data,
   }) =>
@@ -96,8 +80,8 @@ class TaskDatabaseMock extends _i1.Mock
             #data: data,
           },
         ),
-        returnValue: _i4.Future<_i2.TaskEntity?>.value(),
-      ) as _i4.Future<_i2.TaskEntity?>);
+        returnValue: _i4.Future<_i3.TaskEntity?>.value(),
+      ) as _i4.Future<_i3.TaskEntity?>);
   @override
   _i4.Future<bool> delete({required String? id}) => (super.noSuchMethod(
         Invocation.method(
