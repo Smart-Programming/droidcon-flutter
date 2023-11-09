@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use, always_specify_types, unused_element
+
 import 'package:droidcon_flutter/src/application/utils/custom_tag.dart';
 import 'package:droidcon_flutter/src/application/utils/image_container.dart';
 import 'package:flutter/material.dart';
@@ -64,12 +66,12 @@ class _SingleTopicPageState extends State<SingleTopicPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+            children: <Widget>[
               _TopicHeadline(),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Row(
-                  children: [
+                  children: <Widget>[
                     CustomTag(backgroundColor: Colors.black, children: <Widget>[
                       CircleAvatar(
                         radius: 10,
@@ -121,15 +123,16 @@ class _SingleTopicPageState extends State<SingleTopicPage> {
                           topLeft: Radius.circular(20),
                           topRight: Radius.circular(20))),
                   child: FutureBuilder(
-                    future: rootBundle.loadString('assets/${widget.props.file}'),
-                    builder: (context, AsyncSnapshot snapshot) {
+                    future:
+                        rootBundle.loadString('assets/${widget.props.file}'),
+                    builder: (BuildContext context, AsyncSnapshot snapshot) {
                       if (snapshot.connectionState == ConnectionState.done) {
                         if (snapshot.hasData) {
                           return Markdown(
                             data: snapshot.data,
                           );
                         } else if (snapshot.hasError) {
-                          return Text("Error: ${snapshot.error}");
+                          return Text('Error: ${snapshot.error}');
                         }
                       }
                       return Center(

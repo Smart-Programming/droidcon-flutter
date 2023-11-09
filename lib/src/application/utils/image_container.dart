@@ -26,11 +26,13 @@ class ImageContainer extends StatelessWidget {
       padding: padding,
       height: height,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          image: DecorationImage(
-              image: AssetImage('assets/landing.jpg'),
-              fit: BoxFit.cover,
-              opacity: opacity)),
+        borderRadius: BorderRadius.circular(20),
+        image: DecorationImage(
+          image: AssetImage('assets/landing.jpg'),
+          fit: BoxFit.cover,
+          opacity: opacity,
+        ),
+      ),
       child: child,
     );
   }

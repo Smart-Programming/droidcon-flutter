@@ -1,3 +1,5 @@
+// ignore_for_file: unused_element, must_be_immutable
+
 import 'package:droidcon_flutter/src/application/utils/custom_tag.dart';
 import 'package:droidcon_flutter/src/application/utils/image_container.dart';
 import 'package:droidcon_flutter/src/presentation/pages/article/single_topic_page.dart';
@@ -19,7 +21,9 @@ class _ArticlesListState extends State<ArticlesList> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
             icon: Icon(
               Icons.arrow_back_outlined,
               color: Colors.black,
@@ -37,20 +41,20 @@ class _ArticlesListState extends State<ArticlesList> {
 class _Topics extends StatelessWidget {
   _Topics({super.key});
 
-  List topics = [
-    {
+  List<Map<String, dynamic>> topics = <Map<String, dynamic>>[
+    <String, dynamic>{
       'author': 'Steve Maina',
       'topic': 'Architecture',
       'file': 'flutter_testing.md',
       'linkedIn': 'steveMaina'
     },
-    {
+    <String, dynamic>{
       'author': 'Paul Mburu',
       'topic': 'Infrastructure',
       'file': 'flutter_testing.md',
       'linkedIn': 'PaulMburu'
     },
-    {
+    <String, dynamic>{
       'author': 'Nderi Kamau',
       'topic': 'Architecture with testing',
       'file': 'flutter_testing.md',
@@ -63,10 +67,10 @@ class _Topics extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Column(
-        children: [
+        children: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
+            children: <Widget>[
               Text(
                 'All Topics',
                 style: Theme.of(context)
@@ -85,7 +89,7 @@ class _Topics extends StatelessWidget {
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: topics.length,
-                itemBuilder: (context, index) {
+                itemBuilder: (BuildContext context, int index) {
                   return Container(
                     width: MediaQuery.of(context).size.width * 0.5,
                     margin: const EdgeInsets.only(right: 15),
@@ -101,7 +105,7 @@ class _Topics extends StatelessWidget {
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                        children: <Widget>[
                           ImageContainer(
                               width: MediaQuery.of(context).size.width * 0.5,
                               height: MediaQuery.of(context).size.width * 0.5),
@@ -170,7 +174,7 @@ class _TopicsList extends StatelessWidget {
                   height: 1.25,
                   fontWeight: FontWeight.bold)),
           Row(
-            children: [
+            children: <Widget>[
               TextButton(
                   onPressed: () {},
                   style: TextButton.styleFrom(padding: EdgeInsets.zero),

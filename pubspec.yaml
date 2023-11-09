@@ -95,7 +95,6 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
   assets:
-    - assets/docs/flutter_testing.md
     - assets/flutter_testing.md
     - assets/logo.zip
     - assets/landing.jpg
