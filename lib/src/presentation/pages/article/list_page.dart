@@ -44,7 +44,7 @@ class _Topics extends StatelessWidget {
   List<Map<String, dynamic>> topics = <Map<String, dynamic>>[
     <String, dynamic>{
       'author': 'Steve Maina',
-      'topic': 'Architecture',
+      'topic': 'Layered architecture',
       'file': 'flutter_testing.md',
       'linkedIn': 'steveMaina'
     },
@@ -56,7 +56,7 @@ class _Topics extends StatelessWidget {
     },
     <String, dynamic>{
       'author': 'Nderi Kamau',
-      'topic': 'Architecture with testing',
+      'topic': 'Testing',
       'file': 'flutter_testing.md',
       'linkedIn': 'Nder12'
     }
