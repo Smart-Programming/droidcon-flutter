@@ -1,4 +1,5 @@
 import 'package:hive/hive.dart';
+part 'enums.g.dart';
 
 enum AppContext {
   development,

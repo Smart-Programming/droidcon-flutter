@@ -39,7 +39,7 @@ class TaskDatabaseMock extends _i1.Mock
         returnValue: _i4.Future<_i3.TaskEntity?>.value(),
       ) as _i4.Future<_i3.TaskEntity?>);
   @override
-  _i4.Future<_i3.TaskEntity?> create({required dynamic data}) =>
+  _i4.Future<_i3.TaskEntity?> create({required _i3.TaskEntity? data}) =>
       (super.noSuchMethod(
         Invocation.method(
           #create,
@@ -69,7 +69,7 @@ class TaskDatabaseMock extends _i1.Mock
   @override
   _i4.Future<_i3.TaskEntity?> update({
     required String? id,
-    dynamic data,
+    required _i3.TaskEntity? data,
   }) =>
       (super.noSuchMethod(
         Invocation.method(

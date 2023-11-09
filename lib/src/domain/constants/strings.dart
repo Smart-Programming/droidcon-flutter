@@ -4,6 +4,8 @@ class AppStrings {
     defaultValue: '1.0.0',
   );
 
+  static const String dbName = 'tasks.db';
+
   static const String appName = 'Droidcon Flutter';
   static const String landingPageTitle = 'Landing Page';
   static const String landingPageDescription =

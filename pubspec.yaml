@@ -47,7 +47,9 @@ dependencies:
   lints: ^2.1.1
   lottie: ^2.6.0
   mockito: ^5.4.2
+  path: ^1.8.3
   redux: ^5.0.0
+  sqflite: ^2.3.0
   uuid: ^4.1.0
   flutter_markdown: ^0.6.18+2
   url_launcher:
