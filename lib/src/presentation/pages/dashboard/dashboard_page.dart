@@ -179,7 +179,7 @@ class _DashboardPageState extends State<DashboardPage>
                           ),
                           onPressed: () {
                             Navigator.of(context)
-                                .pushNamed(AppRoutes.kanbanRoute);
+                                .pushNamed(AppRoutes.articlesRoute);
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
