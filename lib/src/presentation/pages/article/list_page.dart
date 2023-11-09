@@ -45,7 +45,7 @@ class _Topics extends StatelessWidget {
     <String, dynamic>{
       'author': 'Steve Maina',
       'topic': 'Architecture',
-      'file': 'flutter_testing.md',
+      'file': 'layered_architecture.md',
       'linkedIn': 'steveMaina'
     },
     <String, dynamic>{
