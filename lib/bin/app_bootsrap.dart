@@ -7,7 +7,7 @@ import 'package:droidcon_flutter/src/domain/constants/enums.dart';
 import 'package:droidcon_flutter/src/domain/entities/task_entity.dart';
 import 'package:droidcon_flutter/src/domain/interfaces/i_data_source_facade.dart';
 import 'package:droidcon_flutter/src/domain/interfaces/tasks/i_task_repository.dart';
-import 'package:droidcon_flutter/src/infrastructure/database/hive/hive.dart';
+import 'package:droidcon_flutter/src/infrastructure/database/sqflite/sqflite.dart';
 import 'package:droidcon_flutter/src/infrastructure/repository/task_repository.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +24,8 @@ FutureOr<void> appBootstrap({
   /// a problem since we rely on abstract classes (interfaces) as opposed to
   /// their implementation (SOLID principals)
   ///
-  final IDataSourceFacade<TaskEntity> dataSource = HiveTasksDatabase();
+  final IDataSourceFacade<TaskEntity> dataSource =
+      SQFliteTasksDatabase(); //HiveTasksDatabase();
   await dataSource.initDatabase();
   final ITaskRepository tasksRepository = TaskRepository(dataSource);
 

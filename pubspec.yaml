@@ -47,8 +47,12 @@ dependencies:
   lints: ^2.1.1
   lottie: ^2.6.0
   mockito: ^5.4.2
+  path: ^1.8.3
   redux: ^5.0.0
+  sqflite: ^2.3.0
   uuid: ^4.1.0
+  flutter_markdown: ^0.6.18+2
+  url_launcher:
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -91,7 +95,9 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
   assets:
+    - assets/flutter_testing.md
     - assets/logo.zip
     - assets/landing.jpg
+    - assets/linkedIn.jpg
     - assets/lottie/logo.json
     - assets/lottie/building.json

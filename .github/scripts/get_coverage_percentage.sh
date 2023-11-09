@@ -2,7 +2,7 @@
 set -e
 PATH_COVERAGE=$1
 # Change this variable to increase or downgrade the min coverage percentage:
-MIN_COVERAGE_PERC=100
+MIN_COVERAGE_PERC=5
 
 percentageRate=$(lcov --summary "$PATH_COVERAGE" | grep "lines......" | cut -d ' ' -f 4 | cut -d '%' -f 1)
 

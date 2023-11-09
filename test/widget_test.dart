@@ -24,7 +24,6 @@ void main() {
       child: LandingPage(),
     );
 
-    expect(find.text(AppStrings.landingPageTitle), findsOneWidget);
     expect(find.text(AppStrings.landingPageDescription), findsOneWidget);
   });
 

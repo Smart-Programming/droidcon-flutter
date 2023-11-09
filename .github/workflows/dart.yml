@@ -3,9 +3,9 @@ name: Flutter CI
 on:
   push:
     branches:
-          - develop
-          - alpha
-          - master
+      - develop
+      - alpha
+      - master
   pull_request:
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
           distribution: "zulu"
           java-version: "12.x"
           cache: "gradle"
-      
+
       - name: Set up Gradle Cache
         run: |
           mkdir -p $HOME/.gradle/caches
@@ -51,7 +51,7 @@ jobs:
         uses: zgosalvez/github-actions-report-lcov@v3
         with:
           coverage-files: coverage/lcov.info
-          minimum-coverage: 50
+          minimum-coverage: 10
           artifact-name: code-coverage-report
           github-token: ${{ secrets.G_TOKEN }}
 

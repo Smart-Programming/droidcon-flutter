@@ -22,6 +22,7 @@ void main() {
         (WidgetTester tester) async {
           TaskEntity task = TaskEntity(
             name: 'Sample task',
+            sortOrder: Random.secure().nextInt(2000),
             taskStatus: TaskStatus.done,
           );
 
@@ -31,6 +32,7 @@ void main() {
             tasks.add(
               task.copyWith(
                 id: Random.secure().toString(),
+                sortOrder: Random.secure().nextInt(2000),
                 createdAt: DateTime.now().toIso8601String(),
               ),
             );
